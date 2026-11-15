@@ -1,0 +1,11 @@
+# Fixed before the tests were run.
+universe: [BX, KKR, APO, CG, ARES]        # the five largest US-listed alternative asset managers with weekly data from 2012-2014; equal weight, rebalanced weekly
+sample_start: "2012-06-01"
+benchmark: "S&P 500 (SPY) held at the basket's trailing 104-week beta, shifted one week, financed at 3-month T-bills; 5 bp on changes in the SPY position"
+hypothesis: "Listed GP stocks are leveraged equity: after matching their past beta with the S&P 500, the excess return is indistinguishable from zero."
+split: "2020-01-01"                       # reported 2014-2019 and 2020-2026
+robustness: {lookback_weeks: [52, 156], cost_bp: [5, 20]}
+sources:
+  stock_prices.parquet: {url: "https://huggingface.co/datasets/defeatbeta/yahoo-finance-data/resolve/main/data/US/stock_prices.parquet", licence: "ODC-BY", sha256: "4c522ec0dee02cb6554b5c3e4929d512327715c8f89670f9b1898b2403912f98"}
+  stock_dividend_events.parquet: {url: "https://huggingface.co/datasets/defeatbeta/yahoo-finance-data/resolve/main/data/US/stock_dividend_events.parquet", licence: "ODC-BY", sha256: "9eb8265ac9d21997a8d9a31f7ee8e5099c42ca2508fe36a07929595b378d4b54"}
+  daily_treasury_yield.parquet: {url: "https://huggingface.co/datasets/defeatbeta/yahoo-finance-data/resolve/main/data/US/daily_treasury_yield.parquet", licence: "ODC-BY", sha256: "34f65d005dd53c16e4cdabdbf22621dca95fa7e741dde184cb6ae67eea01bf2d"}
